@@ -25,7 +25,7 @@ public class Driver {
 		while(option != 0){
 			switch (option){
 			case 1:
-			//	addEmployee();
+				addEmployeeMenu();
 				break;
 			case 2:
 			//	editEmployee();
@@ -57,6 +57,91 @@ public class Driver {
     	int choice = input.nextInt();
     	return choice;
     }
+    
+    private void addEmployeeChoices(){
+    	int option = addEmployeeMenu();
+		while(option != 0){
+			switch (option){
+			case 1:
+				addManager();
+				break;
+			case 2:
+				addSalesWorker();
+				break;
+			case 3:
+				addTempWorker();
+				break;
+			case 4:
+				run();
+				break;
+			}
+			System.out.println("");
+			option = addEmployeeMenu();
+		}		
+		System.out.println("Exiting, have a nice day.");
+		System.out.println("GoodBye!");
+	}
+    
+    private int addEmployeeMenu(){
+    	System.out.println("Please choose Employee Role:");
+    	System.out.println("========");
+    	System.out.println("   1) Manager");
+    	System.out.println("========");
+    	System.out.println("   2) Sales Worker");
+    	System.out.println("========");
+    	System.out.println("   3) Temp Worker");
+    	System.out.println("========");
+    	System.out.println("   4) Go Back");
+    	System.out.println("========");
+    	System.out.println("   0) Exit");
+    	System.out.println("====>>>>");
+    	
+		int choice = input.nextInt();
+    	return choice;   	
+    }
+    
+    private void addTempWorker() {
+    	System.out.println("Please enter Employee first name:");
+    	String firstName = input.nextLine();
+    	System.out.println("Please enter Employee surname:");
+    	String lastName = input.nextLine();
+    	System.out.println("Please enter Employee hourly rate:");
+    	Double hourlyRate = input.nextDouble();
+    	employees.add(new Employee(firstName, lastName, hourlyRate));	
+	}
+
+	private void addSalesWorker() {
+		System.out.println("Please enter Employee first name:");
+    	String firstName = input.nextLine();
+    	System.out.println("Please enter Employee surname:");
+    	String lastName = input.nextLine();
+    	System.out.println("Please enter Employee hourly rate:");
+    	Double hourlyRate = input.nextDouble();
+    	System.out.println("Please enter Employee Bonus:");
+    	Double bonus = input.nextDouble();
+    	employees.add(new Employee(firstName, lastName, hourlyRate));
+		
+	}
+
+	private void addManager() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+    
+
+    
+
+    
+    /*public void addEmployee(){
+    	System.out.println("Please enter Employee first name:");
+    	String firstName = input.nextLine();
+    	System.out.println("Please enter Employee surname:");
+    	String lastName = input.nextLine();
+    	System.out.println("Please enter Employee hourly rate:");
+    	Double hourlyRate = input.nextDouble();
+    	employees.add(new Employee(firstName, lastName, hourlyRate));
+    }*/
 
 
 }

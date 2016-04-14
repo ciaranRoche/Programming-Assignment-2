@@ -5,10 +5,9 @@ public class Employee {
 	protected String firstName;
 	protected String lastName;
 	protected double hourlyRate;
+	
 	protected double hoursWorked;
 	protected double overTimeWorked;
-	
-	
 	
 	final static double NORMAL_WORKWEEK = 37.5;
 	
