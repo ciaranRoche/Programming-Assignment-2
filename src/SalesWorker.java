@@ -9,12 +9,19 @@ public class SalesWorker extends Employee {
 	}
 
 	public double getBonus() {
-		return bonus;
+		if((bonus<0)&&(bonus>20)){
+			return 0;
+		}else{
+			return bonus;
+		}
 	}
 
 	public void setBonus(double bonus) {
-		this.bonus = bonus;
+		if((bonus>=0)&&(bonus<=20)){
+			this.bonus = bonus;
+		}
 	}
+
 	
 	public String toString(){
         return "Employee First Name: " + firstName 	

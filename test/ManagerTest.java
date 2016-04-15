@@ -40,6 +40,8 @@ public class ManagerTest {
 		manValidation1 = new Manager ("Mary", "Contrary", -1, -1);
 		manValidation2 = new Manager ("Mike", "Contrary", 0, 0);
 		manValidation3 = new Manager ("Mark", "Contrary", 1, 1);
+		
+		
     }
 
 	/**
