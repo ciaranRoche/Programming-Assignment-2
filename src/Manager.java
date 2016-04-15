@@ -4,11 +4,13 @@ public class Manager extends Employee {
 
 	private double bonus;
 	
-	private ArrayList<Manager> managerEmployees;
+	private ArrayList<Employee> managerEmployees;
 
 	public Manager(String firstName, String secondName, double hourlyRate, double bonus){
 		super(firstName, secondName, hourlyRate );
 		this.bonus = bonus;
+		
+		managerEmployees = new ArrayList<Employee>();
 	}
 	
 	public double calculateSalary(double hourlyRate) {
@@ -16,28 +18,22 @@ public class Manager extends Employee {
 	}
 	
 	public ArrayList<Employee> getDept() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return managerEmployees;
 	}
 
-	public Object numberInDept() {
-		// TODO Auto-generated method stub
-		return null;
+	public int numberInDept() {
+
+		return managerEmployees.size();
 	}
 
-	public void addDeptEmployee(SalesWorker sales1) {
-		// TODO Auto-generated method stub
-		
+	public void addDeptEmployee(Employee employee) {
+		managerEmployees.add(employee);
 	}
 	
-
-	public void addDeptEmployee(TempWorker temp1) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	public void setDept(ArrayList<Employee> tempDepartment) {
-		// TODO Auto-generated method stub
+		this.managerEmployees = tempDepartment;
 		
 	}
 
@@ -59,15 +55,6 @@ public class Manager extends Employee {
 		}
 	}
 
-
-
-	public ArrayList<Manager> getManagerEmployees() {
-		return managerEmployees;
-	}
-
-	public void setManagerEmployees(ArrayList<Manager> managerEmployees) {
-		this.managerEmployees = managerEmployees;
-	}
 	
 	public String toString(){
         return "Employee First Name: " + firstName 	

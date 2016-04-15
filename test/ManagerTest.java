@@ -51,7 +51,7 @@ public class ManagerTest {
 		assertEquals("Computing", manNormal1.getSecondName());
         assertEquals(12, manNormal1.getBonus(), 0.01);
 		assertEquals(20, manNormal1.getHourlyRate(), 0.01);	
-		//assertEquals(0, manNormal1.numberInDept());
+		assertEquals(0, manNormal1.numberInDept());
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class ManagerTest {
 	/**
 	 * Test method for addDeptEmployee(Employee).
 	 */
-	//@Test
+	@Test
 	public void testAddDeptEmployee() {
 		 //empty and add one employee
 	     assertEquals(0, manNormal1.numberInDept());		
@@ -148,7 +148,7 @@ public class ManagerTest {
 	/**
 	 * Test method for dept getters and setters.
 	 */
-	//@Test
+	@Test
 	public void testDeptGettersAndSetters() {
 		assertEquals(0, manNormal1.getDept().size());  //empty department
 		assertEquals(2, manNormal2.getDept().size());  //already populated department
