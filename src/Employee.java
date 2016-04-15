@@ -3,42 +3,64 @@ import java.util.ArrayList;
 public class Employee {
 	
 	protected String firstName;
-	protected String lastName;
+	protected String secondName;
 	protected double hourlyRate;
 	
 	protected double hoursWorked;
 	protected double overTimeWorked;
 	
+	private static ArrayList<String> employees;
+	
 	final static double NORMAL_WORKWEEK = 37.5;
 	
-	public Employee(String firstName, String lastName, double hourlyRate){
+	public Employee(String firstName, String secondName, double hourlyRate){
 		this.firstName = firstName;
-		this.lastName = lastName;
+		this.secondName = secondName;
 		this.hourlyRate = hourlyRate;
-		//this.overTimeWorked = overTimeWorked;
 		
+		employees =new ArrayList<String>();
 		
 	}
 	
+	public double calculateSalary(double hoursWorked) {
+		if(hoursWorked<=NORMAL_WORKWEEK){
+			return ((getHourlyRate()*(hoursWorked))+(calculateOvertime(hoursWorked)));
+		}else{
+			return ((getHourlyRate()*(NORMAL_WORKWEEK))+(calculateOvertime(hoursWorked)));
+		}
+	}
+		
+	
+	private double calculateOvertime(double hoursWorked){
+		if(hoursWorked<NORMAL_WORKWEEK){
+			return(0.0);
+		}else{
+			return((getHourlyRate()*2)*(hoursWorked-NORMAL_WORKWEEK));
+		}
+	}
+	
+	
 	public String toString(){
         return "Employee First Name: " + firstName 	
-             + ", Surname: " + lastName
+             + ", Surname: " + secondName
              + ", Hourly Rate " + hourlyRate;
     }
 
 	public String getFirstName() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return firstName;
 	}
 	
 	public String getSecondName() {
-		// TODO Auto-generated method stub
-		return null;
+		return secondName;
 	}
 	
 	public double getHourlyRate() {
-		// TODO Auto-generated method stub
-		return 0;
+		if(hourlyRate<0){
+			return 0;
+		}else{
+		return hourlyRate;
+		}
 	}
 	
 	public void setFirstName(String firstName) {
@@ -46,15 +68,28 @@ public class Employee {
 		
 	}
 
-	public void setSecondName(String lastName) {
-		this.lastName = lastName;
+	public void setSecondName(String secondName) {
+		this.secondName = secondName;
 		
 	}
 
 	public void setHourlyRate(double hourlyRate) {
-		this.hourlyRate = hourlyRate;
-		
+		if(hourlyRate<0){
+			return;
+		}else{
+			this.hourlyRate = hourlyRate;
+		}
 	}
+
+	public static ArrayList<String> getEmployees() {
+		return employees;
+	}
+
+	public static void setEmployees(ArrayList<String> employees) {
+		Employee.employees = employees;
+	}
+
+
 
 
 	

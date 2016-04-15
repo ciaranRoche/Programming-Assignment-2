@@ -3,8 +3,8 @@ public class SalesWorker extends Employee {
 
 	private double bonus;
 
-	public SalesWorker(String firstName, String lastName, double hourlyRate, double bonus) {
-		super(firstName, lastName, hourlyRate);
+	public SalesWorker(String firstName, String secondName, double hourlyRate, double bonus) {
+		super(firstName, secondName, hourlyRate);
 		this.bonus = bonus;
 	}
 
@@ -15,5 +15,12 @@ public class SalesWorker extends Employee {
 	public void setBonus(double bonus) {
 		this.bonus = bonus;
 	}
+	
+	public String toString(){
+        return "Employee First Name: " + firstName 	
+             + ", Surname: " + secondName
+             + ", Hourly Rate " + hourlyRate
+             + ", Bonus: " + bonus;      	
+    }
 
 }

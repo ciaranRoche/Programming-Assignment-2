@@ -6,14 +6,13 @@ public class Manager extends Employee {
 	
 	private ArrayList<Manager> managerEmployees;
 
-	public Manager(String firstName, String lastName, double hourlyRate, double bonus){
-		super(firstName, lastName, hourlyRate );
+	public Manager(String firstName, String secondName, double hourlyRate, double bonus){
+		super(firstName, secondName, hourlyRate );
 		this.bonus = bonus;
 	}
 	
 	public double calculateSalary(double hourlyRate) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((super.calculateSalary(hourlyRate))+getBonus());
 	}
 	
 	public ArrayList<Employee> getDept() {
@@ -45,11 +44,19 @@ public class Manager extends Employee {
 	/*** getters and setters **/
 
 	public double getBonus() {
-		return bonus;
+		if(bonus<0){
+			return 0;
+		}else{
+			return bonus;
+		}
 	}
 
 	public void setBonus(double bonus) {
-		this.bonus = bonus;
+		if(bonus<0){
+			return;
+		}else{
+			this.bonus = bonus;
+		}
 	}
 
 
@@ -61,7 +68,13 @@ public class Manager extends Employee {
 	public void setManagerEmployees(ArrayList<Manager> managerEmployees) {
 		this.managerEmployees = managerEmployees;
 	}
-
+	
+	public String toString(){
+        return "Employee First Name: " + firstName 	
+             + ", Surname: " + secondName
+             + ", Hourly Rate: " + hourlyRate
+             + ", Bonus: " + bonus;
+    }
 
 	
 	

@@ -1,14 +1,19 @@
 
 public class TempWorker extends Employee{
 
-	public TempWorker(String firstName, String lastName, double hourlyRate) {
-		super(firstName, lastName, hourlyRate);
+	public TempWorker(String firstName, String secondName, double hourlyRate) {
+		super(firstName, secondName, hourlyRate);
 	}
 	
 
-	public double calculateSalary(double d) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double calculateSalary(double hourlyRate) {
+		return ((super.calculateSalary(hourlyRate)));
 	}
+	
+	public String toString(){
+        return "Employee First Name: " + firstName 	
+             + ", Surname: " + secondName
+             + ", Hourly Rate " + hourlyRate;
+    }
 
 }

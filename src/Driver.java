@@ -10,14 +10,15 @@ public class Driver {
 	private static ArrayList<Employee> employees;
 	
 	public Driver(){
-		input = new Scanner(System.in);	
+		input = new Scanner(System.in);
 	}
 	
 	public static void main(String args[])
 	{
 		Driver app = new Driver();
-		app.run();
 		employees = new ArrayList<Employee>();
+		app.run();
+		
 	}
 	
     private void run(){
@@ -25,17 +26,19 @@ public class Driver {
 		while(option != 0){
 			switch (option){
 			case 1:
-				addEmployeeMenu();
+				addEmployeeChoices();
 				break;
 			case 2:
-			//	editEmployee();
+				System.out.println(listEmployees());
 				break;
 			case 3:
-			//	calculateSalary();
+			//	editDepartments();
 				break;
 			case 4:
 			//	listEmployee();
 				break;
+			case 5:
+			//  editDetails();
 			}
 			System.out.println("");
 			option = menu();
@@ -48,9 +51,10 @@ public class Driver {
     	System.out.println("Employee index/payroll");
     	System.out.println("Please select the number of the option you want below");
     	System.out.println("   1) Add a new Employee");
-    	System.out.println("   2) Change an Employees Department");
-    	System.out.println("   3) Calculate Employee Salaries");
-    	System.out.println("   4) List Employee Details");
+    	System.out.println("   2) List Employees");
+    	System.out.println("   3) Edit Employee Departments");
+    	System.out.println("   4) Calculate Employee Salaries");
+    	System.out.println("   5) Edit Employee Details");
     	System.out.println("========");
     	System.out.println("   0) Exit");
     	System.out.println("====>>>>");
@@ -102,16 +106,18 @@ public class Driver {
     
     private void addTempWorker() {
     	System.out.println("Please enter Employee first name:");
+    	input.nextLine();
     	String firstName = input.nextLine();
     	System.out.println("Please enter Employee surname:");
     	String lastName = input.nextLine();
     	System.out.println("Please enter Employee hourly rate:");
     	Double hourlyRate = input.nextDouble();
-    	employees.add(new Employee(firstName, lastName, hourlyRate));	
+    	employees.add(new TempWorker(firstName, lastName, hourlyRate));	
 	}
 
 	private void addSalesWorker() {
 		System.out.println("Please enter Employee first name:");
+		input.nextLine();
     	String firstName = input.nextLine();
     	System.out.println("Please enter Employee surname:");
     	String lastName = input.nextLine();
@@ -119,29 +125,41 @@ public class Driver {
     	Double hourlyRate = input.nextDouble();
     	System.out.println("Please enter Employee Bonus:");
     	Double bonus = input.nextDouble();
-    	employees.add(new Employee(firstName, lastName, hourlyRate));
+    	employees.add(new SalesWorker(firstName, lastName, hourlyRate, bonus));
 		
 	}
 
 	private void addManager() {
-		// TODO Auto-generated method stub
+		System.out.println("Please enter Managers first name:");
+		input.nextLine();
+		String firstName = input.nextLine();
+		System.out.println("Please enter Managers surname:");
+		String lastName = input.nextLine();
+		System.out.println("Please enter Managers hourly rate:");
+		Double hourlyRate = input.nextDouble();
+		System.out.println("Please enter Managers Bonus:");
+		Double bonus = input.nextDouble();
+		employees.add(new Manager(firstName, lastName, hourlyRate, bonus));
 		
 	}
 	
-    
-
-    
-
-    
-    /*public void addEmployee(){
-    	System.out.println("Please enter Employee first name:");
-    	String firstName = input.nextLine();
-    	System.out.println("Please enter Employee surname:");
-    	String lastName = input.nextLine();
-    	System.out.println("Please enter Employee hourly rate:");
-    	Double hourlyRate = input.nextDouble();
-    	employees.add(new Employee(firstName, lastName, hourlyRate));
-    }*/
-
+	public String listEmployees()
+	{
+		if (employees.size() == 0)
+		{
+			return "No Employees!";
+		}
+		else
+		{
+			String listEmployees = "";
+			for (int i = 0; i < employees.size(); i++)
+			{
+				listEmployees = listEmployees + (i + ":" + employees.get(i)) + "\n";
+			}
+			return listEmployees;
+		}
+		
+	}
+	
 
 }
