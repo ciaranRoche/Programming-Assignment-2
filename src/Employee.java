@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 
 public class Employee {
 	
@@ -6,36 +6,32 @@ public class Employee {
 	protected String secondName;
 	protected double hourlyRate;
 	
-	protected double hoursWorked;
 	protected double overTimeWorked;
 	
-	private static ArrayList<String> employees;
 	
-	final static double NORMAL_WORKWEEK = 37.5;
+	private final static double NORMAL_WORKWEEK = 37.5;
 	
 	public Employee(String firstName, String secondName, double hourlyRate){
 		this.firstName = firstName;
 		this.secondName = secondName;
 		this.hourlyRate = hourlyRate;
 		
-		employees =new ArrayList<String>();
-		
 	}
 	
 	public double calculateSalary(double hoursWorked) {
-		if(hoursWorked<=NORMAL_WORKWEEK){
+		if(hoursWorked<=getNormalWorkweek()){
 			return ((getHourlyRate()*(hoursWorked))+(calculateOvertime(hoursWorked)));
 		}else{
-			return ((getHourlyRate()*(NORMAL_WORKWEEK))+(calculateOvertime(hoursWorked)));
+			return ((getHourlyRate()*(getNormalWorkweek()))+(calculateOvertime(hoursWorked)));
 		}
 	}
 		
 	
-	private double calculateOvertime(double hoursWorked){
-		if(hoursWorked<NORMAL_WORKWEEK){
+	double calculateOvertime(double hoursWorked){
+		if(hoursWorked<getNormalWorkweek()){
 			return(0.0);
 		}else{
-			return((getHourlyRate()*2)*(hoursWorked-NORMAL_WORKWEEK));
+			return((getHourlyRate()*2)*(hoursWorked-getNormalWorkweek()));
 		}
 	}
 	
@@ -81,12 +77,8 @@ public class Employee {
 		}
 	}
 
-	public static ArrayList<String> getEmployees() {
-		return employees;
-	}
-
-	public static void setEmployees(ArrayList<String> employees) {
-		Employee.employees = employees;
+	public static double getNormalWorkweek() {
+		return NORMAL_WORKWEEK;
 	}
 
 

@@ -9,6 +9,9 @@ public class Driver {
 	private Scanner input;
 	private static ArrayList<Employee> employees;
 	
+	public double hoursWorked;
+	public double totalSalary = 0;
+	
 	public Driver(){
 		input = new Scanner(System.in);
 	}
@@ -32,13 +35,14 @@ public class Driver {
 				System.out.println(listEmployees());
 				break;
 			case 3:
-			//	editDepartments();
+				//
 				break;
 			case 4:
-			//	listEmployee();
+				calcWages();
 				break;
 			case 5:
-			//  editDetails();
+				totalSalary();
+				break;
 			}
 			System.out.println("");
 			option = menu();
@@ -54,7 +58,8 @@ public class Driver {
     	System.out.println("   2) List Employees");
     	System.out.println("   3) Edit Employee Departments");
     	System.out.println("   4) Calculate Employee Salaries");
-    	System.out.println("   5) Edit Employee Details");
+    	System.out.println("   5) Total Salary to date");
+
     	System.out.println("========");
     	System.out.println("   0) Exit");
     	System.out.println("====>>>>");
@@ -90,9 +95,7 @@ public class Driver {
     	System.out.println("Please choose Employee Role:");
     	System.out.println("========");
     	System.out.println("   1) Manager");
-    	System.out.println("========");
     	System.out.println("   2) Sales Worker");
-    	System.out.println("========");
     	System.out.println("   3) Temp Worker");
     	System.out.println("========");
     	System.out.println("   4) Go Back");
@@ -103,6 +106,45 @@ public class Driver {
 		int choice = input.nextInt();
     	return choice;   	
     }
+  
+    
+    private void calcWages(){
+    	System.out.println(listEmployees());
+    	
+    	if (getEmployees().size() != 0){
+    		System.out.print("Index of employees ==>");
+    		int index = input.nextInt();
+    		
+    		if (index < getEmployees().size()){	
+				
+    			System.out.print("Enter hours worked this week ");
+				hoursWorked = input.nextDouble();
+				
+				//employee.calculateOvertime(hoursWorked);
+				employee = getEmployees().get(index);
+				System.out.println(employee.calculateSalary(hoursWorked));
+				
+				totalSalary = totalSalary + employee.calculateSalary(hoursWorked);
+				
+				
+			}
+			else
+			{
+				System.out.println("There is no Employee for this index number");
+				System.out.println("Please choose another index number:");
+				calcWages();
+			}
+		}
+	} 
+    
+    private void totalSalary(){
+    	if(totalSalary<=0){
+    		System.out.println("There is no salaries calculated");
+    	}else{
+    		System.out.println("The total calculated salary to date is: " + totalSalary);
+    	}
+    }
+    	
     
     private void addTempWorker() {
     	System.out.println("Please enter Employee first name:");
@@ -159,6 +201,14 @@ public class Driver {
 			return listEmployees;
 		}
 		
+	}
+	
+	public ArrayList<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(ArrayList<Employee> employees) {
+		this.employees = employees;
 	}
 	
 

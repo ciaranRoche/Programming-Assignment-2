@@ -55,11 +55,11 @@ public class SalesWorkerTest {
 	 */
 	@Test	
 	public void testCaclulateSalary(){
-		assertEquals(318.75, sale2.calculateSalary(37.5), 0.01 );
-		assertEquals(361.25, sale2.calculateSalary(40), 0.01 );
+		assertEquals(350.62, sale2.calculateSalary(37.5), 0.01 );
+		assertEquals(397.37, sale2.calculateSalary(40), 0.01 );
 		
-		assertEquals(300, sale1.calculateSalary(30), 0.01 );
-		assertEquals(305.67, sale1.calculateSalary(30.5678), 0.01 );
+		assertEquals(336, sale1.calculateSalary(30), 0.01 );
+		assertEquals(342.35, sale1.calculateSalary(30.5678), 0.01 );
 	}
 	
 	/**
