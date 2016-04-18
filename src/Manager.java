@@ -18,12 +18,10 @@ public class Manager extends Employee {
 	}
 	
 	public ArrayList<Employee> getDept() {
-
 		return managerEmployees;
 	}
 
 	public int numberInDept() {
-
 		return managerEmployees.size();
 	}
 
@@ -36,7 +34,7 @@ public class Manager extends Employee {
 		this.managerEmployees = tempDepartment;
 		
 	}
-
+	
 	/*** getters and setters **/
 
 	public double getBonus() {
@@ -60,7 +58,8 @@ public class Manager extends Employee {
         return "Employee First Name: " + firstName 	
              + ", Surname: " + secondName
              + ", Hourly Rate: " + hourlyRate
-             + ", Bonus: " + bonus;
+             + ", Bonus: " + bonus
+             + ", Employees in Depatment:\n"+ getDept();
     }
 
 	

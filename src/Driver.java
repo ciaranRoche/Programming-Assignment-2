@@ -38,16 +38,30 @@ public class Driver {
 				System.out.println(listEmployees());
 				break;
 			case 3:
+				try{
 				addEmployeeDept();
+				}catch (Exception e){
+					System.out.println("Error: "+e);
+				}
 				break;
 			case 4:
+				try{
 				calcWages();
+				}catch (Exception e){
+					System.out.println("Error "+e);
+				}
 				break;
 			case 5:
 				totalSalary();
 				break;
+			default:   
+				System.out.println("Invalid option entered: " + option);
+             break;
 			}
-			System.out.println("");
+			System.out.println("\nPress any key to continue...");
+            input.nextLine();
+            input.nextLine();
+            
 			option = menu();
 		}		
 		System.out.println("Exiting, have a nice day.");
@@ -75,23 +89,39 @@ public class Driver {
 		while(option != 0){
 			switch (option){
 			case 1:
+				try{
 				addManager();
+				}catch (Exception e){
+					System.out.println("Error: "+e);
+				}
 				break;
 			case 2:
+				try{
 				addSalesWorker();
+				}catch (Exception e){
+					System.out.println("Error: "+e);
+				}
 				break;
 			case 3:
+				try{
 				addTempWorker();
+				}catch (Exception e){
+					System.out.println("Error: "+e);
+				}
 				break;
 			case 4:
 				run();
 				break;
+			default:   
+				System.out.println("Invalid option entered: " + option);
+             break;
 			}
-			System.out.println("");
+			System.out.println("\nPress any key to continue...");
+            input.nextLine();
+            input.nextLine();
+            
 			option = addEmployeeMenu();
 		}		
-		System.out.println("Exiting, have a nice day.");
-		System.out.println("GoodBye!");
 	}
     
     private int addEmployeeMenu(){
@@ -102,8 +132,6 @@ public class Driver {
     	System.out.println("   3) Temp Worker");
     	System.out.println("========");
     	System.out.println("   4) Go Back");
-    	System.out.println("========");
-    	System.out.println("   0) Exit");
     	System.out.println("====>>>>");
     	
 		int choice = input.nextInt();
@@ -237,10 +265,5 @@ public class Driver {
 	public ArrayList<Employee> getEmployees() {
 		return employees;
 	}
-
-	public void setEmployees(ArrayList<Employee> employees) {
-		this.employees = employees;
-	}
-	
 
 }
