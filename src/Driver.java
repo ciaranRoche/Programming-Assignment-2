@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Driver {
 	
 	Employee employee;
+	Manager manager;
+	
 	private Scanner input;
 	private static ArrayList<Employee> employees;
 	
@@ -14,6 +16,7 @@ public class Driver {
 	
 	public Driver(){
 		input = new Scanner(System.in);
+
 	}
 	
 	public static void main(String args[])
@@ -35,7 +38,7 @@ public class Driver {
 				System.out.println(listEmployees());
 				break;
 			case 3:
-				//
+				addEmployeeDept();
 				break;
 			case 4:
 				calcWages();
@@ -56,7 +59,7 @@ public class Driver {
     	System.out.println("Please select the number of the option you want below");
     	System.out.println("   1) Add a new Employee");
     	System.out.println("   2) List Employees");
-    	System.out.println("   3) Edit Employee Departments");
+    	System.out.println("   3) Add Employee to a Departments");
     	System.out.println("   4) Calculate Employee Salaries");
     	System.out.println("   5) Total Salary to date");
 
@@ -107,6 +110,34 @@ public class Driver {
     	return choice;   	
     }
   
+    private void addEmployeeDept(){
+    	System.out.println("Please choose an Employee to add to a department from the index");
+    	System.out.println(listEmployees());
+    	
+    	if(getEmployees().size() != 0){
+    		System.out.println("Index of employees ==>");
+    		int employeeChoice = input.nextInt();
+    		System.out.println("Please choose a Manager of a department");
+    		System.out.println(listEmployees());
+    		int managerChoice = input.nextInt();
+    		
+    		Employee employee = employees.get(managerChoice);
+    		
+    		if(employee.getClass().equals(Manager.class)){
+    			Manager manager = (Manager) employees.get(managerChoice);
+    			
+    			manager.addDeptEmployee(employees.get(employeeChoice));
+    			//System.out.println(manager.getDept().get(0).firstName);
+    			System.out.println("Employee:"+employees.get(employeeChoice).firstName+" has been added to: "+manager.firstName +"`s Department.");
+    		}
+    		
+    	}
+    	else{
+    		System.out.println("There is no Employee for this index number");
+			System.out.println("Please choose another index number:");
+			addEmployeeDept();
+    	}
+    }
     
     private void calcWages(){
     	System.out.println(listEmployees());
