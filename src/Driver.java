@@ -139,13 +139,13 @@ public class Driver {
     }
   
     private void addEmployeeDept(){
-    	System.out.println("Please choose an Employee to add to a department from the index");
+    	System.out.println("Please choose an Employee to add to a department from the index:\n");
     	System.out.println(listEmployees());
     	
     	if(getEmployees().size() != 0){
     		System.out.println("Index of employees ==>");
     		int employeeChoice = input.nextInt();
-    		System.out.println("Please choose a Manager of a department");
+    		System.out.println("Please choose the Manager of a department from the index:\n");
     		System.out.println(listEmployees());
     		int managerChoice = input.nextInt();
     		
@@ -157,6 +157,10 @@ public class Driver {
     			manager.addDeptEmployee(employees.get(employeeChoice));
     			//System.out.println(manager.getDept().get(0).firstName);
     			System.out.println("Employee:"+employees.get(employeeChoice).firstName+" has been added to: "+manager.firstName +"`s Department.");
+    		}else{
+    			System.out.println("You did not choose a Manager");
+    			System.out.println("Please start over\n=======");
+    			addEmployeeDept();
     		}
     		
     	}
