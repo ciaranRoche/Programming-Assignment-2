@@ -57,6 +57,9 @@ public class Driver {
 			case 6:
 				editEmployee();
 				break;
+			case 7:
+				fireEmployee();
+				break;
 			default:   
 				System.out.println("Invalid option entered: " + option);
              break;
@@ -76,10 +79,11 @@ public class Driver {
     	System.out.println("Please select the number of the option you want below");
     	System.out.println("   1) Add a new Employee");
     	System.out.println("   2) List Employees");
-    	System.out.println("   3) Add Employee to a Departments");
+    	System.out.println("   3) Add an Employee to a Department");
     	System.out.println("   4) Calculate Employee Salaries");
     	System.out.println("   5) Total Salary to date");
     	System.out.println("   6) Edit Employees Details" );
+    	System.out.println("   7) Remove Employee from system");
     	
     	System.out.println("========");
     	System.out.println("   0) Exit");
@@ -234,6 +238,28 @@ public class Driver {
 			}
 		}
 	}
+	
+	public void fireEmployee()
+	{
+		System.out.println(listEmployees());
+
+		if (getEmployees().size() != 0){	
+			//only process the delete if DVDs exist in the ArrayList
+			System.out.print("Please choose index number of employee to remove from the system ==>");
+			int fire = input.nextInt();
+
+			if (fire < getEmployees().size()){	
+				//if the index number exists in the ArrayList, delete it from the ArrayList
+				getEmployees().remove(fire);
+				System.out.println("Employee has been removed from the system.");
+			}
+			else
+			{
+				System.out.println("There is no Employee for the index number you have chosen");
+			}
+		}
+	} 
+
 
     private void calcWages(){
     	System.out.println(listEmployees());
@@ -246,14 +272,10 @@ public class Driver {
 				
     			System.out.print("Enter hours worked this week ");
 				hoursWorked = input.nextDouble();
-				
-				//employee.calculateOvertime(hoursWorked);
 				employee = getEmployees().get(index);
 				System.out.println(employee.calculateSalary(hoursWorked));
 				
-				totalSalary = totalSalary + employee.calculateSalary(hoursWorked);
-				
-				
+				totalSalary = totalSalary + employee.calculateSalary(hoursWorked);	
 			}
 			else
 			{
