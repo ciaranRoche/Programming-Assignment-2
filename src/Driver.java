@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Driver {
 	
 	Employee employee;
-	Manager manager;
+	
 	
 	private Scanner input;
 	private static ArrayList<Employee> employees;
@@ -54,6 +54,9 @@ public class Driver {
 			case 5:
 				totalSalary();
 				break;
+			case 6:
+				editEmployee();
+				break;
 			default:   
 				System.out.println("Invalid option entered: " + option);
              break;
@@ -76,7 +79,8 @@ public class Driver {
     	System.out.println("   3) Add Employee to a Departments");
     	System.out.println("   4) Calculate Employee Salaries");
     	System.out.println("   5) Total Salary to date");
-
+    	System.out.println("   6) Edit Employees Details" );
+    	
     	System.out.println("========");
     	System.out.println("   0) Exit");
     	System.out.println("====>>>>");
@@ -162,7 +166,7 @@ public class Driver {
     			System.out.println("Please start over\n=======");
     			addEmployeeDept();
     		}
-    		
+		
     	}
     	else{
     		System.out.println("There is no Employee for this index number");
@@ -171,6 +175,66 @@ public class Driver {
     	}
     }
     
+	public void editEmployee()
+	{
+		System.out.println(listEmployees());
+
+		if (getEmployees().size() != 0){	
+			System.out.print("Index of Emplyees to edit ==>");
+			int choice = input.nextInt();
+			
+			Employee employee = employees.get(choice);
+			
+			if (choice < getEmployees().size()){
+				if(employee.getClass().equals(Manager.class)){
+					System.out.println("Please enter Managers first name:");
+					input.nextLine();
+					String firstName = input.nextLine();
+					System.out.println("Please enter Managers surname:");
+					String lastName = input.nextLine();
+					System.out.println("Please enter Managers hourly rate:");
+					Double hourlyRate = input.nextDouble();
+					System.out.println("Please enter Managers Bonus:");
+					Double bonus = input.nextDouble();
+					
+					Employee employeeChoice = new Manager(firstName, lastName, hourlyRate, bonus);
+					
+					employees.set(choice, employeeChoice);
+				}else if(employee.getClass().equals(SalesWorker.class)){
+					System.out.println("Please enter Employee first name:");
+					input.nextLine();
+			    	String firstName = input.nextLine();
+			    	System.out.println("Please enter Employee surname:");
+			    	String lastName = input.nextLine();
+			    	System.out.println("Please enter Employee hourly rate:");
+			    	Double hourlyRate = input.nextDouble();
+			    	System.out.println("Please enter Employee Bonus:");
+			    	Double bonus = input.nextDouble();
+			    	
+			    	Employee employeeChoice = new SalesWorker(firstName, lastName, hourlyRate, bonus);
+			    	
+			    	employees.set(choice, employeeChoice);
+				}else if(employee.getClass().equals(TempWorker.class)){
+					System.out.println("Please enter Employee first name:");
+			    	input.nextLine();
+			    	String firstName = input.nextLine();
+			    	System.out.println("Please enter Employee surname:");
+			    	String lastName = input.nextLine();
+			    	System.out.println("Please enter Employee hourly rate:");
+			    	Double hourlyRate = input.nextDouble();
+			    	
+			    	Employee employeeChoice = new TempWorker(firstName, lastName, hourlyRate);
+					
+					employees.set(choice, employeeChoice);
+				}
+			}
+			else
+			{
+				System.out.println("There is no Employee for this index number");
+			}
+		}
+	}
+
     private void calcWages(){
     	System.out.println(listEmployees());
     	
