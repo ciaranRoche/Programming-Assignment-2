@@ -8,18 +8,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test Class for the Manager class
+ * Test Class for the SalesWorker class
  */
 
 /**
- * @author Siobhan Drohan & Mairead Meagher
+ * @author Ciaran Roche
  * @version 15/3/2016
  */
 
 public class SalesWorkerTest {
 	private SalesWorker sale1, sale2, invalidSale;
-	private SalesWorker salesValidation1, salesValidation2, salesValidation3;
-
 
 	/**
 	 * Method to set up data for testing. 
@@ -27,13 +25,9 @@ public class SalesWorkerTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		sale1 = new SalesWorker("Donald", "Trump", 10, 12);
-		sale2 = new SalesWorker("Frank", "Underwood", 8.50, 10);
-		invalidSale = new SalesWorker("Ronald", "McDonald", -1, 10);
-		
-		salesValidation1 = new SalesWorker ("Mary", "Contrary", -1, -1);
-		salesValidation2 = new SalesWorker ("Mike", "Contrary", 0, 0);
-		salesValidation3 = new SalesWorker ("Mark", "Contrary", 1, 1);
+		sale1 = new SalesWorker("John", "Doe", 10, 12);
+		sale2 = new SalesWorker("Bart", "Simpson", 8.50, 10);
+		invalidSale = new SalesWorker("Peter", "Griffen", -1, 10);
 	}
 
 	/**
@@ -42,8 +36,8 @@ public class SalesWorkerTest {
 	@Test
 	public void testConstructor() {
 		//test on valid data
-		assertEquals("Donald", sale1.getFirstName());
-		assertEquals("Trump", sale1.getSecondName());
+		assertEquals("John", sale1.getFirstName());
+		assertEquals("Doe", sale1.getSecondName());
 		assertEquals(10, sale1.getHourlyRate(), 0.01);
 		//test on invalid data
 		assertEquals(0, invalidSale.getHourlyRate(), 0.01);
@@ -83,13 +77,13 @@ public class SalesWorkerTest {
 	 */
 	@Test	
 	public void testSettersGetters(){	
-		assertEquals("Donald", sale1.getFirstName());
-		sale1.setFirstName("Donald Duck");
-		assertEquals("Donald Duck", sale1.getFirstName());
+		assertEquals("John", sale1.getFirstName());
+		sale1.setFirstName("Tommy Gun");
+		assertEquals("Tommy Gun", sale1.getFirstName());
 		
-		assertEquals("Trump", sale1.getSecondName());
-		sale1.setSecondName("Mickey Mouse");
-		assertEquals("Mickey Mouse", sale1.getSecondName());
+		assertEquals("Doe", sale1.getSecondName());
+		sale1.setSecondName("Homer Simpson");
+		assertEquals("Homer Simpson", sale1.getSecondName());
 
 		sale1.setHourlyRate(40);
 		assertEquals(40, sale1.getHourlyRate(), 0.01);
