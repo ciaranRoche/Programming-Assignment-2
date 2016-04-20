@@ -1,4 +1,14 @@
+/**
+ * Driver Class for Assignment 2
+ * This is a menu driven class, where the user can add employees, list employees, 
+ * calculate salaries, store and load their employees and add employees to departments,
+ * All the information is stored in strings and doubles in an Arraylist Employee
+ */
 
+/**
+ * @author Ciaran Roche
+ * @version 20/4/2016
+ */
  
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -14,10 +24,13 @@ public class Driver {
 	public double hoursWorked;
 	public double totalSalary = 0;
 	
+	/* Constructor for driver and scanner*/
+	
 	public Driver(){
 		input = new Scanner(System.in);
 
 	}
+	
 	
 	public static void main(String args[])
 	{
@@ -26,6 +39,19 @@ public class Driver {
 		app.run();
 		
 	}
+	
+	/*Run() this method displays the menu and processes the users choice
+	 * option 1, brings another menu adding employees
+	 * option 2, lists employees in the system
+	 * option 3, adds employees to a specific manager/department
+	 * option 4, calculates a specific employees wages
+	 * option 5, gives totalSalary menu, allowing to clear total salary plus view salary
+	 * option 6, allows the user to edit employees
+	 * option 7, allows the user to delete employees
+	 * option 8, loads employees from an xml file
+	 * option 9, saves employees to an xml file
+	 * option 0, exits the system
+	 * */
 	
     private void run(){
 		int option = menu();
@@ -90,6 +116,10 @@ public class Driver {
 		System.out.println("GoodBye!");
 	}
     
+    /*
+     * menu() this prints the main menu for the application
+     * */
+    
     private int menu(){
     	System.out.println("Employee index/payroll");
     	System.out.println("Please select the number of the option you want below");
@@ -109,6 +139,13 @@ public class Driver {
     	int choice = input.nextInt();
     	return choice;
     }
+
+    /*
+     * addEmployeeChoices() this displays the menu for adding an employee and processes the users choice
+     * option 1, adds a manager
+     * option 2, adds a sales worker
+     * option 3, adds a temp worker
+     * */
     
     private void addEmployeeChoices(){
     	int option = addEmployeeMenu();
@@ -150,6 +187,10 @@ public class Driver {
 		}		
 	}
     
+    /*
+     * addEmployeeMenu prints the choices for adding an employee
+     * */
+    
     private int addEmployeeMenu(){
     	System.out.println("Please choose Employee Role:");
     	System.out.println("========");
@@ -164,6 +205,13 @@ public class Driver {
     	return choice;   	
     }
   
+    /*
+     * addEmployeeDept() this method lists all employees with their index number
+     * taking the users input and saving it, then lists all employees allowing the user
+     * to choose a manager from the list
+     * it then adds the first index number to the managers index number in a manager arrayList
+     * */
+    
     private void addEmployeeDept(){
     	System.out.println("Please choose an Employee to add to a department from the index:\n");
     	System.out.println(listEmployees());
@@ -196,6 +244,13 @@ public class Driver {
 			addEmployeeDept();
     	}
     }
+    
+    /*
+     * editEmployee() This gives a list of employees and takes the users input from the index numbers
+     * creates an opject of this index number and cross checks it to see what class it is equal too
+     * depending on what class it is equal too, it takes in information needed and sets new information over
+     * existing information in the choosen index number
+     * */
     
 	public void editEmployee()
 	{
@@ -257,6 +312,11 @@ public class Driver {
 		}
 	}
 	
+	/*fireEmployee() this method prints a list of employees
+	 * takes in users choosen int as an index number. and deletes the employee
+	 * in choosen index number
+	 * */
+	
 	public void fireEmployee()
 	{
 		System.out.println(listEmployees());
@@ -277,7 +337,10 @@ public class Driver {
 			}
 		}
 	} 
-
+	
+	/*calcWages() This prints list of employees, takes in index number of employee in which the user wants 
+	 * to calculate wages for. takes in double for hours worked and then calls on the employee.calculateSalary method
+	 * returns by printing out the total for the calculated salary*/
 
     private void calcWages(){
     	System.out.println(listEmployees());
@@ -304,6 +367,11 @@ public class Driver {
 		}
 	} 
     
+    /*totalSalary() This method displays and processes the total salary method
+     * option 1 prints total salary calculated to date
+     * option 2 clears the salary
+     * option 3 returns to the main menu*/
+    
     private void totalSalary(){
     	int option = salaryMenu();
 		while(option != 0){
@@ -327,8 +395,10 @@ public class Driver {
 			option = salaryMenu();
 		}		
 	}
-    	
     
+    /*salaryMenu() this prints the options for the totalsalary method
+     * */
+    	   
     private int salaryMenu() {
         	System.out.println("Employee Total Salary Menu");
         	System.out.println("Please select the number of the option you want below");
@@ -341,6 +411,9 @@ public class Driver {
         	return choice;
         }
     
+    /*totalSalaryInt() this checks the total salary and if the double is less then or equal to zero
+     * it prints no salary calculated other wise it prints total salary calculated to date*/
+    
     private void totalSalaryInt(){
     	if(totalSalary<=0){
     		System.out.println("There is no salaries calculated");
@@ -349,11 +422,17 @@ public class Driver {
     	}
     }
 
+    /*clearSalary()This resets the total salary back to zero*/
+    
     private void clearSalary(){
     	totalSalary = 0;
     	System.out.println("Salarie total has been cleared.\n");
     	totalSalary();
     }
+    
+    /*addTempWorker() this takes in string firstname, string lastname and a double hourlyrate
+     * and adds them to employees arrraylist as a new tempworker*/
+    
 	private void addTempWorker() {
     	System.out.println("Please enter Employee first name:");
     	input.nextLine();
@@ -365,6 +444,9 @@ public class Driver {
     	employees.add(new TempWorker(firstName, lastName, hourlyRate));	
 	}
 
+	/*addSalesWorker() this takes in a string firstname, a string lastname a double hourlyrate and double bonus
+	 * and adds them to employees arraylist as a new salesWorker*/
+	
 	private void addSalesWorker() {
 		System.out.println("Please enter Employee first name:");
 		input.nextLine();
@@ -376,8 +458,10 @@ public class Driver {
     	System.out.println("Please enter Employee Bonus:");
     	Double bonus = input.nextDouble();
     	employees.add(new SalesWorker(firstName, lastName, hourlyRate, bonus));
-		
 	}
+	
+	/*addManager() this takes in a string firstname, a string lastname, a double hourlyrate and double bonus
+	 * and adds them to the employees arraylist as a new manager*/
 
 	private void addManager() {
 		System.out.println("Please enter Managers first name:");
@@ -392,6 +476,10 @@ public class Driver {
 		employees.add(new Manager(firstName, lastName, hourlyRate, bonus));
 		
 	}
+	
+	/*listEmployees() this checks the size of the employee array
+	 * if there is more then 1 it creates a string called listEmployees
+	 * it then running through a for loop it lists all employees in the arraylist*/
 	
 	public String listEmployees()
 	{
@@ -411,14 +499,20 @@ public class Driver {
 		
 	}
 	
+	/*Simple getter for the arraylist Employee*/
+	
 	public ArrayList<Employee> getEmployees() {
 		return employees;
 	}
 
+	/*load() basic load method for an xml file*/
+	
 	public void load() throws Exception
 	{
 		employees = HandleXML.read("employees.xml");
 	}
+	
+	/*save() basic save method for an xml file*/
 	
 	public void save() throws Exception
 	{
