@@ -239,8 +239,8 @@ public class Driver {
 		
     	}
     	else{
-    		System.out.println("There is no Employee for this index number");
-			System.out.println("Please choose another index number:");
+    		//System.out.println("There is no Employee for this index number");
+			//System.out.println("Please choose another index number:");
 			//addEmployeeDept();
     	}
     }
@@ -518,6 +518,10 @@ public class Driver {
 	{
 		HandleXML.write(employees, "employees.xml");
 	}
+	
+	/*
+	 * toTwoDecimalPlaces() this method reduces a double with mult decimal places to just two decimal places
+	 * */
 	
 	private double toTwoDecimalPlaces(double num)
     {
