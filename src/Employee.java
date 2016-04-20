@@ -1,6 +1,6 @@
 
 
-public class Employee {
+public abstract class Employee {
 	
 	protected String firstName;
 	protected String secondName;
@@ -17,7 +17,8 @@ public class Employee {
 		this.hourlyRate = hourlyRate;
 		
 	}
-public Employee() {}	
+	public Employee() {}	
+	
 	public double calculateSalary(double hoursWorked) {
 		if(hoursWorked<=getNormalWorkweek()){
 			return ((getHourlyRate()*(hoursWorked))+(calculateOvertime(hoursWorked)));
