@@ -7,7 +7,24 @@
      <double>250.0</double>
     </void>
     <void property="dept">
-     <object class="java.util.ArrayList"/>
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="SalesWorker" id="SalesWorker0">
+        <void property="bonus">
+         <double>5.0</double>
+        </void>
+        <void property="firstName">
+         <string>John</string>
+        </void>
+        <void property="hourlyRate">
+         <double>9.3</double>
+        </void>
+        <void property="secondName">
+         <string>Doe</string>
+        </void>
+       </object>
+      </void>
+     </object>
     </void>
     <void property="firstName">
      <string>Ciaran</string>
@@ -21,20 +38,7 @@
    </object>
   </void>
   <void method="add">
-   <object class="SalesWorker">
-    <void property="bonus">
-     <double>5.0</double>
-    </void>
-    <void property="firstName">
-     <string>John</string>
-    </void>
-    <void property="hourlyRate">
-     <double>9.3</double>
-    </void>
-    <void property="secondName">
-     <string>Doe</string>
-    </void>
-   </object>
+   <object idref="SalesWorker0"/>
   </void>
   <void method="add">
    <object class="TempWorker">

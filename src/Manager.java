@@ -59,8 +59,8 @@ public class Manager extends Employee {
         return "Employee First Name: " + firstName 	
              + ", Surname: " + secondName
              + ", Hourly Rate: " + hourlyRate
-             + ", Bonus: " + bonus
-             + ", Employees in Depatment:\n"+ getDept();
+             + ", Bonus: " + bonus + "\n"
+             + "           Employees in "+firstName+ "`s Depatment: "+ getDept();
     }
 
 	
