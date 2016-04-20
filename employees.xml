@@ -1,4 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_73" class="java.beans.XMLDecoder">
- <object class="java.util.ArrayList"/>
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="Manager">
+    <void property="bonus">
+     <double>225.0</double>
+    </void>
+    <void property="dept">
+     <object class="java.util.ArrayList"/>
+    </void>
+    <void property="firstName">
+     <string>Ciaran</string>
+    </void>
+    <void property="hourlyRate">
+     <double>23.5</double>
+    </void>
+    <void property="secondName">
+     <string>Roche</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="SalesWorker">
+    <void property="bonus">
+     <double>15.0</double>
+    </void>
+    <void property="firstName">
+     <string>Jimmy</string>
+    </void>
+    <void property="hourlyRate">
+     <double>9.85</double>
+    </void>
+    <void property="secondName">
+     <string>Skinner</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="TempWorker">
+    <void property="firstName">
+     <string>John </string>
+    </void>
+    <void property="hourlyRate">
+     <double>12.0</double>
+    </void>
+    <void property="secondName">
+     <string>Doe</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="SalesWorker">
+    <void property="bonus">
+     <double>6.33</double>
+    </void>
+    <void property="firstName">
+     <string>Billy</string>
+    </void>
+    <void property="hourlyRate">
+     <double>8.756</double>
+    </void>
+    <void property="secondName">
+     <string>No Mates</string>
+    </void>
+   </object>
+  </void>
+ </object>
 </java>

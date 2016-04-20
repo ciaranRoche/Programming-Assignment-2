@@ -91,7 +91,7 @@ public class Manager extends Employee {
              + ", Surname: " + secondName
              + ", Hourly Rate: " + hourlyRate
              + ", Bonus: " + bonus + "\n"
-             + "           Employees in "+firstName+ "`s Depatment: "+ getDept();
+             + "           Employees in "+firstName+ "`s Depatment: "+ getDept()+"\n";
     }
 
 	

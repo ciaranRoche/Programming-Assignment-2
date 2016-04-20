@@ -102,6 +102,9 @@ public class Driver {
 					System.out.println("Error reading from file: " + e);
 				}
 				break;
+			case 10:
+				stats();
+				break;
 			default:   
 				System.out.println("Invalid option entered: " + option);
              break;
@@ -133,6 +136,8 @@ public class Driver {
     	System.out.println("========");
     	System.out.println("   8) Load Employees");
     	System.out.println("   9) Save Employees");
+    	System.out.println("========");
+    	System.out.println("  10) Stats");
     	System.out.println("========");
     	System.out.println("   0) Exit");
     	System.out.println("====>>>>");
@@ -271,7 +276,7 @@ public class Driver {
 					String lastName = input.nextLine();
 					System.out.println("Please enter Managers hourly rate:");
 					Double hourlyRate = input.nextDouble();
-					System.out.println("Please enter Managers Bonus:");
+					System.out.println("Please enter Managers Bonus to be added to weekly wage:");
 					Double bonus = input.nextDouble();
 					
 					Employee employeeChoice = new Manager(firstName, lastName, hourlyRate, bonus);
@@ -285,7 +290,7 @@ public class Driver {
 			    	String lastName = input.nextLine();
 			    	System.out.println("Please enter Employee hourly rate:");
 			    	Double hourlyRate = input.nextDouble();
-			    	System.out.println("Please enter Employee Bonus:");
+			    	System.out.println("Please enter Employee Bonus Percentage of weekly wage to be added between 0 and 20 percent:");
 			    	Double bonus = input.nextDouble();
 			    	
 			    	Employee employeeChoice = new SalesWorker(firstName, lastName, hourlyRate, bonus);
@@ -366,7 +371,7 @@ public class Driver {
 			}
 		}
 	} 
-    
+        
     /*totalSalary() This method displays and processes the total salary method
      * option 1 prints total salary calculated to date
      * option 2 clears the salary
@@ -527,4 +532,117 @@ public class Driver {
     {
         return (int) (num *100 ) /100.0; 
     }
+	
+	/*stats() method for controlling and processing the choice made for the stats menu
+	 * 
+	 * */
+	
+	private void stats(){
+    	int option = statsMenu();
+		while(option != 0){
+			switch (option){
+			case 1:
+			    System.out.println("The average hourly rate paid to all employees is: " +averageEmployeeWage());
+				break;
+			case 2:
+				System.out.println("The lowest hourly rate paid to any employee is: "  + lowestWage());
+				break;
+			case 3:
+				System.out.println(listEmployeesUnderMinWage());	
+				break;
+			case 4:
+				run();
+				break;
+			default:   
+				System.out.println("Invalid option entered: " + option);
+             break;
+			}
+			System.out.println("\nPress any key to continue...");
+            input.nextLine();
+            input.nextLine();
+            
+			option = statsMenu();
+		}		
+	}
+	
+	/*statsMenu() Print out of a list of options for the stats menu
+	 * option 1 gives list of average employees wage
+	 * option 2 gives a print out of the lowest paid worker
+	 * option 3 gives a list of any employees on a lower wage than min wage*/
+	
+	private int statsMenu(){
+		System.out.println("Salary Stats Menu");
+    	System.out.println("Please select the number of the option you want below");
+    	System.out.println("   1) The average wage of all Employees");
+    	System.out.println("   2) The lowest paid hourly rate of all Employees");
+    	System.out.println("   3) List of any Employees on lower than minimum wage of 9.15");
+    	System.out.println("========");
+    	System.out.println("   4) Go Back");
+    	System.out.println("====>>>>");
+    	int choice = input.nextInt();
+    	return choice;
+	}
+	
+	/*
+	 * averageEmployeeWage that creates a double, 
+	 * for every employee in employees it adds their hourly rates together
+	 * and divides by employee size to give an average rate
+	 * */
+	
+	private double averageEmployeeWage(){
+        double total = 0;
+        for (Employee employee : employees)
+        { 
+            total = total + employee.hourlyRate;
+        }
+        
+        return toTwoDecimalPlaces(total / employees.size());
+    }
+	
+	/*
+	 * lowestWage()method for given the lowest Wage
+	 * for every employee in employees if takes the hourly rate and looks for the lowestRate
+	 */
+	
+    private String lowestWage(){
+    	if (getEmployees().size() > 0)
+        {
+            Employee lowestWage = employees.get(0);
+            for (Employee employee : employees)
+            { 
+                if (employee.getHourlyRate() < lowestWage.getHourlyRate() )  
+                    lowestWage = employee;
+            }
+            return lowestWage.getFirstName();
+        }
+        else 
+            return "No Employees";
+    }
+    
+    /*listEmployeesUnderMinWage()
+     * this method gives a list of employees under the min wage
+     */
+    
+    public String listEmployeesUnderMinWage(){
+        String str = "";
+        double minWage = 9.15;
+        for (Employee employee : employees)
+        {
+           if (employee.getHourlyRate() < minWage)
+                str += "Employee(s) on an hourly rate below "+ minWage+" are: " + employee.getFirstName() + " " + employee.getSecondName() + " " + toTwoDecimalPlaces(employee.getHourlyRate()) + "\n";   
+        } 
+
+        if (str.equals(""))
+        {
+            return "No Employees are on an hourly rate more than " + minWage;
+        }
+        else 
+            return str;
+    }     
+	
+	
+	
+	
+	
+	
 }
