@@ -8,6 +8,9 @@ public class SalesWorker extends Employee {
 		this.bonus = bonus;
 	}
 	
+	public SalesWorker(){
+		
+	}
 	
 	public double calculateSalary(double hourlyRate) {
 		return (((super.calculateSalary(hourlyRate)/100)*getBonus())+(super.calculateSalary(hourlyRate)));

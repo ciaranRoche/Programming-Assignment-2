@@ -60,6 +60,22 @@ public class Driver {
 			case 7:
 				fireEmployee();
 				break;
+			case 8:
+				try{
+					load();
+				}
+				catch(Exception e){
+					System.out.println("Error writing to file: " + e);
+				}
+				break;
+			case 9: 
+				try{
+					save();
+				}
+				catch(Exception e){
+					System.out.println("Error reading from file: " + e);
+				}
+				break;
 			default:   
 				System.out.println("Invalid option entered: " + option);
              break;
@@ -84,7 +100,9 @@ public class Driver {
     	System.out.println("   5) Total Salary to date");
     	System.out.println("   6) Edit Employees Details" );
     	System.out.println("   7) Remove Employee from system");
-    	
+    	System.out.println("========");
+    	System.out.println("   8) load");
+    	System.out.println("   9) save");
     	System.out.println("========");
     	System.out.println("   0) Exit");
     	System.out.println("====>>>>");
@@ -356,4 +374,13 @@ public class Driver {
 		return employees;
 	}
 
+	public void load() throws Exception
+	{
+		employees = HandleXML.read("employees.xml");
+	}
+	
+	public void save() throws Exception
+	{
+		HandleXML.write(employees, "employees.xml");
+	}
 }

@@ -5,6 +5,9 @@ public class TempWorker extends Employee{
 		super(firstName, secondName, hourlyRate);
 	}
 	
+	public TempWorker(){
+		
+	}
 
 	public double calculateSalary(double hourlyRate) {
 		return ((super.calculateSalary(hourlyRate)));

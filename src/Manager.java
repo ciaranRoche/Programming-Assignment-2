@@ -12,7 +12,8 @@ public class Manager extends Employee {
 		
 		managerEmployees = new ArrayList<Employee>();
 	}
-	
+	public Manager(){
+	}
 	public double calculateSalary(double hourlyRate) {
 		return ((super.calculateSalary(hourlyRate))+getBonus());
 	}
