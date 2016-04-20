@@ -232,7 +232,7 @@ public class Driver {
     			//System.out.println(manager.getDept().get(0).firstName);
     			System.out.println("Employee:"+employees.get(employeeChoice).firstName+" has been added to: "+manager.firstName +"`s Department.");
     		}else{
-    			System.out.println("You did not choose a Manager");
+    			System.out.println("Invalid options picked \nPlease Choose an employee first, and a manager second:");
     			System.out.println("Please start over\n=======");
     			addEmployeeDept();
     		}
@@ -241,7 +241,7 @@ public class Driver {
     	else{
     		System.out.println("There is no Employee for this index number");
 			System.out.println("Please choose another index number:");
-			addEmployeeDept();
+			//addEmployeeDept();
     	}
     }
     
