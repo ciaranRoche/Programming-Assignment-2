@@ -305,15 +305,56 @@ public class Driver {
 	} 
     
     private void totalSalary(){
+    	int option = salaryMenu();
+		while(option != 0){
+			switch (option){
+			case 1:
+				totalSalaryInt();
+				break;
+			case 2:
+				clearSalary();
+				break;
+			case 3:
+				run();
+			default:   
+				System.out.println("Invalid option entered: " + option);
+             break;
+			}
+			System.out.println("\nPress any key to continue...");
+            input.nextLine();
+            input.nextLine();
+            
+			option = salaryMenu();
+		}		
+	}
+    	
+    
+    private int salaryMenu() {
+        	System.out.println("Employee Total Salary Menu");
+        	System.out.println("Please select the number of the option you want below");
+        	System.out.println("   1) Total Salary to Date");
+        	System.out.println("   2) Clear Salary to Date");
+        	System.out.println("========");
+        	System.out.println("   3) Go Back");
+        	System.out.println("====>>>>");
+        	int choice = input.nextInt();
+        	return choice;
+        }
+    
+    private void totalSalaryInt(){
     	if(totalSalary<=0){
     		System.out.println("There is no salaries calculated");
     	}else{
     		System.out.println("The total calculated salary to date is: " + totalSalary);
     	}
     }
-    	
-    
-    private void addTempWorker() {
+
+    private void clearSalary(){
+    	totalSalary = 0;
+    	System.out.println("Salarie total has been cleared.\n");
+    	totalSalary();
+    }
+	private void addTempWorker() {
     	System.out.println("Please enter Employee first name:");
     	input.nextLine();
     	String firstName = input.nextLine();
